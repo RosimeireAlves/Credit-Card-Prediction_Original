@@ -1,0 +1,6 @@
+# Lendo o arquivo 'creditcard.csv1.txt
+
+Optei por baixar o arquivo no meu computador e ler os dados a partir do comando:
+
+from google.colab import files
+umploade = files.upload()
