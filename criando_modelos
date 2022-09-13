@@ -26,3 +26,62 @@ Non-trainalbe params: 0
 
 model.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
 model.fit(X_train, y_train, batch_size = 15, epochs = 10)
+
+#Avaliando o modelo
+
+score = model.evaluate(X_test, y_test)
+print(score)
+
+y_pred = model.predict(X_test)
+
+
+
+
+def plot_confusion_matrix(cm, classes,
+                          normalize=False,
+                          title='Confusion Matrix',
+                          cmap=plt.cm.Blues):
+    """
+    Esta função imprime e plota a matriz de confusão.
+    A normalização pode ser aplicada configurando 'normalize=True'
+    """
+    if normalize:
+        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+        print("Matrix de confusão normalizada")
+    else:
+        print('Matriz de confusão sem normalização')
+
+    plt.imshow(cm, interpolation='nearest', cmap=cmap)
+    plt.title(title)
+    plt.colorbar()
+    tick_marks = np.arange(len(classes))
+    plt.xticks(tick_marks, classes, rotation=0)
+    plt.yticks(tick_marks, classes)
+
+    fmt = '.2f' if normalize else 'd'
+    thresh = cm.max() / 2.
+    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+        plt.text(j, i, format(cm[i, j], fmt),
+                 horizontalalignment="center",
+                 color="white" if cm[i, j] > thresh else "black")
+
+    plt.ylabel('rótulo verdadeiro')
+    plt.xlabel('Rótulo Previsto')
+    plt.tight_layout()
+    
+    
+    
+    
+cm = confusion_matrix(y_test, y_pred.round())
+print(cm)
+
+plot_confusion_matrix(cm, classes = [0,1], title='Confusion Matrix - Test dataset')
+
+print(accuracy_score(y_test, y_pred.round()))
+print(precision_score(y_test, y_pred.round()))
+print(recall_score(y_test, y_pred.round()))
+print(f1_score(y_test, y_pred.round()))
+
+
+
+
