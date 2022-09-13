@@ -1,0 +1,28 @@
+## Rede Neural Profunda - Criando Modelos:
+
+model = Sequential()
+#adicionando camada de entrada
+model.add(Dense(input_dim = 29, units = 16, activation = 'relu'))
+#adicionar segunda camada oculta
+model.add(Dense(units = 24, activation = 'relu'))
+#adicionar camada de desistência
+model.add(Dropout(0.5))
+#adicionar terceira camada oculta
+model.add(Dense(units = 20, activation = 'relu'))
+#adicionar quarta camada oculta
+model.add(Dense(units = 24, activation = 'relu'))
+#adicionar camada de saída
+model.add(Dense(units = 1, activation = 'sigmoid'))
+
+model.summary()
+
+#apresenta como saída: Model:"sequential_2" numa tabela constando tipo, forma da saída se vazia e tipo, e parâmetro.
+#Traz um :
+Total params: 1,917
+Trainable params: 1,917
+Non-trainalbe params: 0
+
+ #Modelo de Ajuste: traz uma análise dos dados quanto a perda e acurácia, em 10 entrada:
+
+model.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
+model.fit(X_train, y_train, batch_size = 15, epochs = 10)
