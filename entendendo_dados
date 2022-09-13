@@ -13,6 +13,7 @@ X = data.drop(['Class'], axis = 1)
 
 ## entendendo o eixo y: (classe, dtype: int64)
 
+##classe é a colluna que classifica as transações entre reais ou falsas.
 y.head()
 
 
