@@ -1,0 +1,8 @@
+Fazendo a leitura dos dados dentro de um Dataframe, para verificar a necessidade de ajustes ou qualquer configuração. Aqui inici-ase uma análise exploratória dos dados a fim de pensar num modelo adequado  de "Machine Learnig"
+
+data = pd.read_csv('creditcard.csv1.txt')
+
+
+## com este comando iremos fazer a leitura dos 10 primeiros dados, de um total de  284.807 entradas distribuidas em 31 colunas:
+
+data.head(10)
